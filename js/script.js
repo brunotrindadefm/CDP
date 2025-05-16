@@ -1,4 +1,4 @@
-function coletarDados(){
+function collectData(){
 
     const name = document.getElementById('name');
     const phone = document.getElementById('phone');

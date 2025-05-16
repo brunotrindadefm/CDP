@@ -31,7 +31,7 @@ body {
     width: 80%;
 }
 
-label {
+.forms label {
     margin: 4px 0;
     font-size: 14px;
     color: #333;
