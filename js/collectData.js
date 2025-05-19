@@ -1,3 +1,5 @@
+import { validateInputs } from "./validateInputs.js";
+
 function collectData(){
 
     const name = document.getElementById('name');
@@ -8,9 +10,9 @@ function collectData(){
 
       const inputs = [];    
     inputs.push(name.value, phone.value, email.value, cpf.value, lastName.value);
+    console.log(inputs);
+
     validateInputs(inputs);
 }
 
-function validateInputs(inputs) {
-  
-  }
+document.querySelector('.btn-buy').addEventListener('click', collectData);
