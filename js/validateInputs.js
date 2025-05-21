@@ -1,10 +1,9 @@
 export function validateInputs(inputs) {
   const [name, phone, email, cpf, lastName] = inputs;
   const errors = [];
-  let valid = false;
 
 
-  function validarCPF(cpf) {
+  function validateCPF(cpf) {
     cpf = cpf.replace(/[^\d]+/g, '');
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
 
@@ -22,34 +21,27 @@ export function validateInputs(inputs) {
     return resto === parseInt(cpf[10]);
   }
 
-  function validarNome(nome) {
-    return /^[A-Za-zÀ-ú\s]{2,}$/.test(nome.trim());
+  function validateNome(name) {
+    return /^[A-Za-zÀ-ú\s]{6,}$/.test(name.trim());
   }
 
 
-  function validarTelefone(telefone) {
-    return /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone.trim());
+  function validatePhone(phone) {
+    return /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(phone.trim());
   }
 
-l
-  function validarEmail(email) {
+  function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   }
 
   // Aplicar as validações
-  if (!validarNome(name)) errors.push("Nome inválido.");
-  if (!validarNome(lastName)) errors.push("Sobrenome inválido.");
-  if (!validarTelefone(phone)) errors.push("Telefone inválido.");
-  if (!validarEmail(email)) errors.push("Email inválido.");
-  if (!validarCPF(cpf)) errors.push("CPF inválido.");
+  if (!validateNome(name)) errors.push("Nome inválido.");
+  if (!validateNome(lastName)) errors.push("Sobrenome inválido.");
+  if (!validatePhone(phone)) errors.push("Telefone inválido.");
+  if (!validateEmail(email)) errors.push("Email inválido.");
+  if (!validateCPF(cpf)) errors.push("CPF inválido.");
 
-  // Exibir resultado
-  if (errors.length > 0) {
-    alert("Erros encontrados:\n" + errors.join("\n"));
-    return valid;
-  } else {
-    alert("Todos os dados são válidos!");
-    valid = true;
-    return valid;
-  }
+  
+
+ return errors;
 }
